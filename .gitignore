@@ -1,0 +1,10 @@
+# Ignorar todos os modelos pesados dentro da pasta models
+models/*
+
+# Mas manter a pasta models na estrutura (criando um arquivo oculto nela depois)
+!models/.gitkeep
+
+# Ignorar arquivos temporários e metadados ocultos (como os que geraram o aviso anterior)
+._*
+.DS_Store
+Thumbs.db
