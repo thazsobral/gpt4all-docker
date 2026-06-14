@@ -1,0 +1,19 @@
+services:
+  gpt4all-api:
+    image: localai/localai:latest
+    container_name: gpt4all_api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./models:/build/models
+    environment:
+      - MODELS_PATH=/build/models
+      # define o modelo padrão a ser usado, caso haja mais de um modelo disponível
+      # - DEFAULT_MODEL_PATH=/build/models/mistral-7b-instruct-v0.1.Q4_0.gguf
+      
+      # Mantendo seus 6 núcleos físicos ativos
+      - THREADS=6
+      - GALL_M_LOCK=MAINTAIN
+      - MALLOC_TRIM_THRESHOLD_=-1
+      
+    restart: unless-stopped
